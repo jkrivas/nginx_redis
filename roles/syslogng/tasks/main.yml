@@ -13,6 +13,11 @@
     name: syslog-ng
     state: present
 
+- name: Uninstall rsyslog
+  yum:
+    name: rsyslog
+    state: absent
+
 - name: Start and enable syslog-ng service
   service:
     name: syslog-ng
