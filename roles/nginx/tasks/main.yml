@@ -4,7 +4,15 @@
     yum:
       name: nginx
       state: present
-  
+
+  - name: Copy nginx loging configuration template
+    template:
+      src: syslog.conf
+      dest: /etc/nginx/default.d/syslog.conf
+      owner: root
+      group: root
+      mode: 0644
+
   - name: Start and enable Nginx service
     service:
       name: nginx
