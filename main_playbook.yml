@@ -2,6 +2,6 @@
 - hosts: main
   roles:
     - epel
-    - nginx
-    - redis
     - syslog-ng
+    - redis
+    - nginx

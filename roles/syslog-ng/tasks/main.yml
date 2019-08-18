@@ -4,8 +4,8 @@
     yum_repository:
       name: czanik-syslog-ng
       description: Copr repo for syslog-ng314 owned by czanik
-      baseurl: https://copr-be.cloud.fedoraproject.org/results/czanik/syslog-ng314/epel-7-$basearch/
-      gpgkey: https://copr-be.cloud.fedoraproject.org/results/czanik/syslog-ng314/pubkey.gpg
+      baseurl: "{{ syslogng_repo_baseurl }}"
+      gpgkey: "{{ syslogng_repo_gpgkey }}"
       gpgcheck: yes
       enabled: yes
   
@@ -14,11 +14,24 @@
       name: syslog-ng
       state: present
   
+  - name: Install syslog-ng-redis plugin
+    yum:
+      name: syslog-ng-redis
+      state: present
+  
   - name: Uninstall rsyslog
     yum:
       name: rsyslog
       state: absent
-  
+
+  - name: Copy nginx loging configuration template
+    template:
+      src: redis.conf
+      dest: /etc/syslog-ng/conf.d/redis.conf
+      owner: root
+      group: root
+      mode: 0644
+
   - name: Start and enable syslog-ng service
     service:
       name: syslog-ng

@@ -5,18 +5,22 @@
       name: nginx
       state: present
 
+  - name: Install policycoreutils-python (for SELinux management)
+    yum:
+      name: policycoreutils-python
+      state: present
+
   - name: Copy nginx loging configuration template
     template:
       src: syslog.conf
-      dest: /etc/nginx/default.d/syslog.conf
+      dest: /etc/nginx/conf.d/syslog.conf
       owner: root
       group: root
       mode: 0644
 
-  - name: Change the httpd_t domain to permissive
-    selinux_permissive:
-      name: httpd_t
-      permissive: true
+  - name: Disable SELinux
+    selinux:
+      state: disabled
 
   - name: Start and enable Nginx service
     service:
