@@ -1,0 +1,25 @@
+---
+- name: Install Redis
+  yum:
+    name: redis
+    state: present
+
+- name: Install redis-py
+  pip:
+    name: redis-py
+    state: present
+
+- name: Enable Append-only logs (AOF)
+  lineinfile:
+    path: /etc/redis.conf
+    regexp: "^{{ item.split(' ')[0] }}"
+    line: "{{ item }}"
+  loop:
+    - appendonly yes
+    - appendfsync everysec
+
+- name: Start and enable redis service
+  service:
+    name: redis
+    state: started
+    enabled: yes

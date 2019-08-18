@@ -1,0 +1,20 @@
+---
+- name: Add repository for syslog-ng
+  yum_repository:
+    name: czanik-syslog-ng
+    description: Copr repo for syslog-ng314 owned by czanik
+    baseurl: https://copr-be.cloud.fedoraproject.org/results/czanik/syslog-ng314/epel-7-$basearch/
+    gpgkey: https://copr-be.cloud.fedoraproject.org/results/czanik/syslog-ng314/pubkey.gpg
+    gpgcheck: yes
+    enabled: yes
+
+- name: Install syslog-ng
+  yum:
+    name: syslog-ng
+    state: present
+
+- name: Start and enable syslog-ng service
+  service:
+    name: syslog-ng
+    state: started
+    enabled: yes
