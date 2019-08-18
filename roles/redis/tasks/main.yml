@@ -5,11 +5,6 @@
       name: redis
       state: present
   
-  - name: Install redis-py
-    pip:
-      name: redis-py
-      state: present
-  
   - name: Enable Append-only logs (AOF)
     lineinfile:
       path: /etc/redis.conf
