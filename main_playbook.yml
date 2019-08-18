@@ -4,4 +4,4 @@
     - epel
     - nginx
     - redis
-    - syslogng
+    - syslog-ng
