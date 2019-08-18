@@ -13,6 +13,11 @@
       group: root
       mode: 0644
 
+  - name: Change the httpd_t domain to permissive
+    selinux_permissive:
+      name: httpd_t
+      permissive: true
+
   - name: Start and enable Nginx service
     service:
       name: nginx
