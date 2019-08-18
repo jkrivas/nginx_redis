@@ -4,7 +4,7 @@
     yum:
       name: redis
       state: present
-  
+
   - name: Enable Append-only logs (AOF)
     lineinfile:
       path: /etc/redis.conf

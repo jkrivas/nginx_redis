@@ -1,0 +1,3 @@
+---
+syslogng_repo_baseurl: https://copr-be.cloud.fedoraproject.org/results/czanik/syslog-ng314/epel-7-$basearch/
+syslogng_repo_gpgkey: https://copr-be.cloud.fedoraproject.org/results/czanik/syslog-ng314/pubkey.gpg
