@@ -23,6 +23,16 @@
     yum:
       name: rsyslog
       state: absent
+  
+  - name: Install policycoreutils-python (for SELinux management)
+    yum:
+      name: policycoreutils-python
+      state: present
+
+  - name: Change the syslogd_t domain to permissive
+    selinux_permissive:
+      name: syslogd_t
+      permissive: true
 
   - name: Copy nginx loging configuration template
     template:
