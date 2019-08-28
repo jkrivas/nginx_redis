@@ -1,7 +1,6 @@
 ---
-- hosts: main
-  roles:
-    - epel
-    - syslog-ng
-    - redis
-    - nginx
+- roles:
+  - epel
+  - syslog-ng
+  - redis
+  - nginx
