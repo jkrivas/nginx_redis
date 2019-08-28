@@ -1,6 +1,7 @@
 ---
-- roles:
-  - epel
-  - syslog-ng
-  - redis
-  - nginx
+- hosts: all
+  roles:
+    - epel
+    - syslog-ng
+    - redis
+    - nginx
